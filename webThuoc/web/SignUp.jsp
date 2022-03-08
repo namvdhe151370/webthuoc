@@ -1,4 +1,8 @@
-
+<%-- 
+    Document   : SignUp
+    Created on : Mar 8, 2022, 8:59:07 AM
+    Author     : hellb
+--%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -37,8 +41,8 @@
 </head>
 <body>
 <div class="login-form">
-    <form action="Login" method="post">
-        <h2 class="text-center">Log in</h2> 
+    <form action="SignUp" method="post">
+        <h2 class="text-center">Sign up</h2>  
         <p class="text-danger">${mess}</p>
         <div class="form-group">
             <input type="text" class="form-control" placeholder="Username" required="required" name="username">
@@ -47,15 +51,13 @@
             <input type="password" class="form-control" placeholder="Password" required="required" name="password">
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block">Log in</button>
+            <input type="password" class="form-control" placeholder="Re-Password" required="required" name="re-password">
         </div>
-        <div class="clearfix">
-            <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
-            <a href="#" class="pull-right">Forgot Password?</a>
-        </div>  
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">Create now</button>
+        </div>
         
-        <p></p>
-        <p class="text-center"><a href="SignUp.jsp">Create an Account</a></p>
+        <p class="text-center"><a href="Login.jsp">Login</a></p>
     </form>
     
 </div>
