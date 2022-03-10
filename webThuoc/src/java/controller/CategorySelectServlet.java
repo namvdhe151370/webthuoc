@@ -21,7 +21,7 @@ import model.Product;
  *
  * @author hellb
  */
-public class HomeSevlet extends HttpServlet {
+public class CategorySelectServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,12 +35,13 @@ public class HomeSevlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        ProductDAO Pdao = new ProductDAO();
+        int categoryid = Integer.parseInt(request.getParameter("categoryid"));
+        ProductDAO pdao = new ProductDAO();
         CategoryDAO Cdao = new CategoryDAO();
+        List<Product> listProductByCid = pdao.getlistProductByCid(categoryid);
         List<Category> listCategory = Cdao.getListCategory();
-        List<Product> listProduct = Pdao.getListProduct();
         request.setAttribute("listCategory", listCategory);
-        request.setAttribute("listProduct", listProduct);
+        request.setAttribute("listProduct", listProductByCid);
         request.getRequestDispatcher("home.jsp").forward(request, response);
     }
 

@@ -17,30 +17,20 @@ import javax.servlet.http.HttpServletResponse;
 import model.Category;
 import model.Product;
 
-/**
- *
- * @author hellb
- */
-public class HomeSevlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+public class SearchServlet extends HttpServlet {
+
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        ProductDAO Pdao = new ProductDAO();
+        String productname = request.getParameter("productname");
+        ProductDAO pdao = new ProductDAO();
         CategoryDAO Cdao = new CategoryDAO();
         List<Category> listCategory = Cdao.getListCategory();
-        List<Product> listProduct = Pdao.getListProduct();
+        List<Product> listProductByPname = pdao.search(productname);
         request.setAttribute("listCategory", listCategory);
-        request.setAttribute("listProduct", listProduct);
+        request.setAttribute("listProduct", listProductByPname);
         request.getRequestDispatcher("home.jsp").forward(request, response);
     }
 

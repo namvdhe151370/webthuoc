@@ -12,6 +12,14 @@
         <servlet-name>HomeSevlet</servlet-name>
         <servlet-class>controller.HomeSevlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CategorySelectServlet</servlet-name>
+        <servlet-class>controller.CategorySelectServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchServlet</servlet-name>
+        <servlet-class>controller.SearchServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginSevlet</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -23,6 +31,14 @@
     <servlet-mapping>
         <servlet-name>HomeSevlet</servlet-name>
         <url-pattern>/Home</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CategorySelectServlet</servlet-name>
+        <url-pattern>/categoryselect</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchServlet</servlet-name>
+        <url-pattern>/Search</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

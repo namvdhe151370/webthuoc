@@ -4,137 +4,141 @@
     Author     : hellb
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shop Homepage - Start Bootstrap Template</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="a.css" rel="stylesheet" />
+    </head>
 
-<head>
-    <title>website</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/css.css">
-    
-</head>
-
-<body>
-    <div class="navbar-main">
-        <div class="navbar">
-            <img src="images/logo.png" class="logo">
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Shop</a></li>
-                <li><a href="Login.jsp">Login</a></li>
-            </ul>
-            <div class="icon">
-                <ion-icon name="search-outline"></ion-icon>
-                <ion-icon name="cart-outline">Cart</ion-icon>
-<!--                <ion-icon name="heart-outline"></ion-icon>-->
-                <ion-icon href="Login.jsp" name="person-outline"></ion-icon>
-                
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="#!">Start Bootstrap</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                        aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#!">All Products</a></li>
+                                <li>
+                                    <hr class="dropdown-divider" />
+                                </li>
+                                <li><a class="dropdown-item" href="#!">Popular Items</a></li>
+                                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form action="Search" class="d-flex me-2 ">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="productname">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                    <form class="d-flex me-2 my-3">
+                        <button class="btn btn-outline-success" type="submit">
+                            <i class="bi-cart-fill me-1"></i>
+                            Cart
+                            <span class="badge bg-success text-white ms-1 rounded-pill">0</span>
+                        </button>
+                    </form>
+                    <button class="btn btn-outline-success">Login</button>
+                </div>
             </div>
-        </div>
-    </div>
-    <!--     hero section -->
+        </nav>
+        <!-- Header-->
+        <header class="bg-dark py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">Shop in style</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+                </div>
+            </div>
+        </header>
+        <!-- Section-->
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <h2>List Catergories</h2>
 
-    <div class="container-fluid">
-        <div class="container">
-            <img src="images/anhlogo1.png">
-        </div>
-    </div>
-
-    <div class="deal-main">
-        <div class="deal">
-            <h1>Test command</h1>
-            <p>sale abc xyzx</p>
-
-            <div class="row">
-                <div class="box">
-                    <div class="info">
-                        <h1>medicine</h1>
-                        <h3>UP TO 50% OFF</h3>
+                        <ul class="list-group">
+                            <c:forEach items="${listCategory}" var="C">
+                                <li class="list-group-item"><a href="categoryselect?categoryid=${C.id}">${C.name}</a></li>
+                                </c:forEach>
+                        </ul>
+                    </div>
+                    <div class="col-md-9">
+                        <h2>Product</h2>
+                        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                            <c:forEach items="${listProduct}" var="P">
+                            <div class="col mb-5">
+                                <div class="card h-100">
+                                    <!-- Sale badge-->
+<!--                                    <div class="badge bg-dark text-white position-absolute"
+                                         style="top: 0.5rem; right: 0.5rem">Sale</div>-->
+                                    <!-- Product image-->
+                                    <img class="card-img-top" src="${P.image}"
+                                         alt="..." />
+                                    <!-- Product details-->
+                                    <div class="card-body p-4">
+                                        <div class="text-center">
+                                            <!-- Product name-->
+                                            <h5 class="fw-bolder">${P.name}</h5>
+                                            <!-- Product reviews-->
+                                            <div class="d-flex justify-content-center small text-warning mb-2">
+                                                <div class="bi-star-fill"></div>
+                                                <div class="bi-star-fill"></div>
+                                                <div class="bi-star-fill"></div>
+                                                <div class="bi-star-fill"></div>
+                                                <div class="bi-star-fill"></div>
+                                            </div>
+                                            <!-- Product price-->
+<!--                                            <span class="text-muted text-decoration-line-through">$20.00</span>-->
+                                            $${P.price}
+                                        </div>
+                                    </div>
+                                    <!-- Product actions-->
+                                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to
+                                                cart</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                            </c:forEach>
+                            
+                        </div>
                     </div>
                 </div>
 
-                <div class="box">
-                    <div class="info">
-                        <h1>test covid</h1>
-                        <h3>UP TO 50% OFF</h3>
-                    </div>
-                </div>
-
-                <div class="box">
-                    <div class="info">
-                        <h1>abc</h1>
-                        <h3>UP TO 100% OFF</h3>
-                    </div>
-                </div>
-
-                <div class="box">
-                    <div class="info">
-                        <h1>abcxs</h1>
-                        <h3>UP TO 200% OFF</h3>
-                    </div>
-                </div>
             </div>
-        </div>
-    </div>
-
-    <div class="product-main">
-        <div class="product">
-            <h1>Gift for everyone</h1>
-            <p>abcserhqwi</p>
-
-            <div class="row">
-                <div class="box">
-                    <img src="images/item1.png" class="sit">
-                </div>
-                <div class="box">
-                    <img src="images/item2.png" class="sit">
-                </div>
-                <div class="box">
-                    <img src="images/item3.png" class="sit">
-                </div>
-                <div class="box">
-                    <img src="images/item4.png" class="sit">
-                </div>
+        </section>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container">
+                <p class="m-0 text-center text-white">Copyright &copy; Your Website 2021</p>
             </div>
-            <button>View all products</button>
-        </div>
-    </div>
-
-    <div class="subscribe-main">
-        <div class="subscribe">
-            <h1>sign up and 100% sale</h1>
-            <p>be the cai gi do o day nha</p>
-            <input type="email" name="" placeholder="Your Email Address">
-
-            <div class="news-icon">
-                <ion-icon name="logo-facebook"></ion-icon>
-                <ion-icon name="logo-twitter"></ion-icon>
-                <ion-icon name="logo-pinterest"></ion-icon>
-                
-            </div>
-        </div>
-    </div>
-    <div class="footer-main">
-        <div class="footer">
-            <ul>
-                <li><a href="#">About us</a></li>
-                <li><a href="#">Store Location</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Support</a></li>
-                <li><a href="#">Policy</a></li>
-                <li><a href="#">FAQ</a></li>
-            </ul>
-            <p>&copy; 2022 foever.awoiuhsdfawer</p>
-        </div>
-    </div>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-</body>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
 
 </html>
