@@ -85,10 +85,34 @@ public class ProductDAO extends BaseDAO<Category> {
         }
         return list;
     }
+    
+    public Product getproductById(int productId) {
+        List<Product> list = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM Product WHERE Pid = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1,productId);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                Product Product = new Product(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getInt(3),
+                        rs.getDouble(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getInt(8));
+                return Product;
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
 
     public static void main(String[] args) {
         ProductDAO c = new ProductDAO();
-        System.out.println(c.search("blood"));
+        System.out.println(c.getproductById(1));
     }
 
 }
