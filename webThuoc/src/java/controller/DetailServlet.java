@@ -37,6 +37,7 @@ public class DetailServlet extends HttpServlet {
         ProductDAO Pdao = new ProductDAO();
         Product productById = Pdao.getproductById(productId);
         request.setAttribute("product", productById);
+        request.getSession().setAttribute("backUrl", "Detail?productId="+productId);
         request.getRequestDispatcher("detail.jsp").forward(request, response);
     }
 

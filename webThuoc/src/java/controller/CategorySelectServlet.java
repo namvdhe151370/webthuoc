@@ -37,10 +37,10 @@ public class CategorySelectServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         int categoryid = Integer.parseInt(request.getParameter("categoryid"));
         ProductDAO pdao = new ProductDAO();
-        CategoryDAO Cdao = new CategoryDAO();
+//        CategoryDAO Cdao = new CategoryDAO();
         List<Product> listProductByCid = pdao.getlistProductByCid(categoryid);
-        List<Category> listCategory = Cdao.getListCategory();
-        request.setAttribute("listCategory", listCategory);
+//        List<Category> listCategory = Cdao.getListCategory();
+//        request.setAttribute("listCategory", listCategory);
         request.setAttribute("listProduct", listProductByCid);
         request.getRequestDispatcher("home.jsp").forward(request, response);
     }

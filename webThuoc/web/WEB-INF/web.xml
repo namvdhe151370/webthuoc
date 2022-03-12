@@ -24,6 +24,22 @@
         <servlet-name>DetailServlet</servlet-name>
         <servlet-class>controller.DetailServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddToCartServlet</servlet-name>
+        <servlet-class>controller.AddToCartServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CartServlet</servlet-name>
+        <servlet-class>controller.CartServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteCartServlet</servlet-name>
+        <servlet-class>controller.DeleteCartServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>buynowServlet</servlet-name>
+        <servlet-class>controller.buynowServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginSevlet</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -47,6 +63,22 @@
     <servlet-mapping>
         <servlet-name>DetailServlet</servlet-name>
         <url-pattern>/Detail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddToCartServlet</servlet-name>
+        <url-pattern>/addtocart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CartServlet</servlet-name>
+        <url-pattern>/carts</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteCartServlet</servlet-name>
+        <url-pattern>/deletecart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>buynowServlet</servlet-name>
+        <url-pattern>/buynow</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

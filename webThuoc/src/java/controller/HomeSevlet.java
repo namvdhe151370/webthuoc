@@ -14,6 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Category;
 import model.Product;
 
@@ -39,7 +40,12 @@ public class HomeSevlet extends HttpServlet {
         CategoryDAO Cdao = new CategoryDAO();
         List<Category> listCategory = Cdao.getListCategory();
         List<Product> listProduct = Pdao.getListProduct();
-        request.setAttribute("listCategory", listCategory);
+        
+        HttpSession session = request.getSession();
+        session.setAttribute("listCategory", listCategory);
+//        request.setAttribute("listCategory", listCategory);
+
+        session.setAttribute("backUrl", "Home");
         request.setAttribute("listProduct", listProduct);
         request.getRequestDispatcher("home.jsp").forward(request, response);
     }
