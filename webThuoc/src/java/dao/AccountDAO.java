@@ -1,6 +1,5 @@
 package dao;
 
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
@@ -47,6 +46,11 @@ public class AccountDAO extends BaseDAO<Account> {
                 a.setId(rs.getInt(1));
                 a.setUser(rs.getString(2));
                 a.setPass(rs.getString(3));
+                a.setDisplayName(rs.getString(4));
+                a.setAddress(rs.getString(5));
+                a.setEmail(rs.getString(6));
+                a.setPhone(rs.getString(7));
+                a.setAvatar(rs.getString(8));
                 return a;
             }
         } catch (Exception e) {
@@ -54,20 +58,36 @@ public class AccountDAO extends BaseDAO<Account> {
         return null;
     }
 
-    public void SignUp(String user, String pass) {
-        String sql = "insert into Account\n"
-                + "values(?,?)";
+    public void SignUp(String user, String pass, String displayname, String address, String email, String phone, String avatar) {
+       String sql = "INSERT INTO Account\n"
+                + "           ([UserName]\n"
+                + "           ,[Password]\n"
+                + "           ,[displayName]\n"
+                + "           ,[address]\n"
+                + "           ,[email]\n"
+                + "           ,[phone]\n"
+                + "           ,[avatar])\n"
+                + "     VALUES\n"
+                + "           (?,?,?,?,?,?,?)";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, user);
             statement.setString(2, pass);
+            statement.setString(3, displayname);
+            statement.setString(4, address);
+            statement.setString(5, email);
+            statement.setString(6, phone);
+            statement.setString(7, avatar);
+            
             statement.executeUpdate();
         } catch (Exception e) {
-        }
+        } 
     }
 
     public static void main(String[] args) {
         AccountDAO c = new AccountDAO();
-        System.out.println(c.login("admin", "admin").getUser());
+        System.out.println(c.checkAccExist("admin"));
     }
+
+    
 }

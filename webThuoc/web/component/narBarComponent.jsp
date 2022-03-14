@@ -6,13 +6,18 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<style>
+    .avatarname{
+        color: #198754;
+    }
+</style>
 <!DOCTYPE html>
 <html>
     <body>
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
-                
+
                 <img class="" style="max-width: 8%" src="images/logo1.png" alt="..." />
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -20,8 +25,8 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="Home">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item"><a class="nav-link" href="about">About</a></li>
+<!--                        <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
                                data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -32,7 +37,7 @@
                                 <li><a class="dropdown-item" href="#!">Popular Items</a></li>
                                 <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
                             </ul>
-                        </li>
+                        </li>-->
                     </ul>
                     <form action="Search" class="d-flex me-2 ">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="productname">
@@ -45,19 +50,20 @@
                             <span class="badge bg-success text-white ms-1 rounded-pill">${sessionScope.carts.size()}</span>
                         </a>
                     </div>
-                        <c:choose>
-                            <c:when test="${sessionScope.account!=null}">
-                                <img class="card-img-top" style="max-width: 50px;border-radius: 50%" src="${sessionScope.account.avatar}"
-                                                 alt="..." />
-                                <a class="btn btn-outline-success ms-2 me-2">${sessionScope.account.displayName}</a>
-                                
-                                <a href="Logout" class="btn btn-outline-success ">Logout</a>
-                            </c:when>
-                            <c:otherwise>
-                                <a href="Login" class="btn btn-outline-success">Login</a>
-                            </c:otherwise>
-                        </c:choose>
-                    
+                    <c:choose>
+                        <c:when test="${sessionScope.account!=null}">
+                            <div class="avatarname">
+                                <img class="card-img-top me-2" style="max-width: 50px;border-radius: 50%" src="${sessionScope.account.avatar}"
+                                     alt="..." />
+                                ${sessionScope.account.displayName}
+                            </div>
+                            <a href="Logout" class="btn btn-outline-success ms-2">Logout</a>
+                        </c:when>
+                        <c:otherwise>
+                            <a href="Login" class="btn btn-outline-success">Login</a>
+                        </c:otherwise>
+                    </c:choose>
+
                 </div>
             </div>
         </nav>

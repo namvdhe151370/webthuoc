@@ -61,9 +61,9 @@ public class LoginSevlet extends HttpServlet {
         if(account!=null){
             if(remember){
                 Cookie userCookie = new Cookie("user", user);
-                userCookie.setMaxAge(60*60*24*7);
+                userCookie.setMaxAge(60*60*24*3);
                 Cookie passCookie = new Cookie("pass", pass);
-                passCookie.setMaxAge(60*60*24*7);
+                passCookie.setMaxAge(60*60*24*3);
                 response.addCookie(userCookie);
                 response.addCookie(passCookie);
             }

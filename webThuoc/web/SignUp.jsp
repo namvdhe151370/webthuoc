@@ -45,13 +45,28 @@
         <h2 class="text-center">Sign up</h2>  
         <p class="text-danger">${mess}</p>
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Username" required="required" name="username">
+            <input type="text" class="form-control" placeholder="Enter Username" required="required" name="username">
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" placeholder="Password" required="required" name="password">
+            <input type="password" class="form-control" placeholder="Enter Password" required="required" name="password">
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" placeholder="Re-Password" required="required" name="re-password">
+            <input type="password" class="form-control" placeholder="Enter Re-Password" required="required" name="re-password">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Enter Display Name" required="required" name="displayname">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Enter Address" required="required" name="address">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Enter email" required="required" name="email">
+        </div>
+         <div class="form-group">
+            <input type="text" class="form-control" placeholder="Enter Phone" required="required" name="phone">
+        </div>
+         <div class="form-group">
+            <input type="text" class="form-control" placeholder="Enter Avatar" required="required" name="avatar">
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary btn-block">Create now</button>

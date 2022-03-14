@@ -7842,13 +7842,14 @@ textarea.form-control-lg {
 
 .bg-dark {
     --bs-bg-opacity: 1;
-    background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
+    background: url(images/anhnen.jpg);
+/*    background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;*/
 }
 
-.bg-black {
+/*.bg-black {
     --bs-bg-opacity: 1;
     background-color: rgba(var(--bs-black-rgb), var(--bs-bg-opacity)) !important;
-}
+}*/
 
 .bg-white {
     --bs-bg-opacity: 1;

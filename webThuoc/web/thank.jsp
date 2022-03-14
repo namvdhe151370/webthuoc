@@ -21,29 +21,24 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="a.css" rel="stylesheet" />
         <style>
-            /*            .buynowform{
-                            border: 1px solid #000; 
-                            border-radius: 10px; 
-                            padding: 1rem;
-                            max-width: 540px; 
-                            background-color: #F7F7F7;
-                            text-align: center
-                            margin: auto;
-                        }
-                        .buynowform .form-control{
-                            text-align: center
-                        }
-                        .buynowform input{
-                            max-width: 100%
-                        }*/
+            .thanksnam{
+                background-image: url(images/thankyou1.jpg); 
+                background-repeat: no-repeat;  
+                width: 100%;
+                background-size: cover;
+                height: 650px;
+            }
+            
         </style>
     </head>
 
     <body>
         <%@include file="component/narBarComponent.jsp" %>
-        <div class="container" style="min-height: 600px">
-            <div class="alert alert-primary text-center" role="alert">
-                Orders successfully. Thanhks for your buying.
+        <div class="container" >
+<!--            <div class="thanksnam">
+            </div>-->
+            <div class="thanksnam alert alert-primary text-center align-items-center" role="alert">
+                Orders successfully. Thank you for purchasing from us.
                 <div class="text-center mt-2">
                     <a class="btn btn-outline-success" href="Home">Continue Shopping</a>
                 </div>

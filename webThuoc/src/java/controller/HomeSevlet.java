@@ -44,9 +44,14 @@ public class HomeSevlet extends HttpServlet {
         HttpSession session = request.getSession();
         session.setAttribute("listCategory", listCategory);
 //        request.setAttribute("listCategory", listCategory);
-
+        int page = 1;
+        String pages = request.getParameter("page");
+        if(pages !=null){
+            page = Integer.parseInt(pages);
+        }
+        final int PAZE_SIZE = 7;
         session.setAttribute("backUrl", "Home");
-        request.setAttribute("listProduct", listProduct);
+        request.setAttribute("listProduct", listProduct.subList((page-1)*PAZE_SIZE, page*PAZE_SIZE));
         request.getRequestDispatcher("home.jsp").forward(request, response);
     }
 

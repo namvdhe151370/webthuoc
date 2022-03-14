@@ -13,14 +13,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Shop Homepage - Start Bootstrap Template</title>
+        <title>Neo Shin Shop</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="a.css" rel="stylesheet" />
+
         <style>
+            .namh1 h1{
+                color: green;
+            }
+            .namh1 p{
+                color: green;
+            }
             .row ul li a{
                 text-decoration: none;
                 color: cadetblue;
@@ -34,9 +41,9 @@
         <!-- Header-->
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
-                <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Shop in style</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+                <div class="namh1 text-center text-white">
+                    <h1 class="display-4 fw-bolder">Neo Shin Drug Shop</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">Always take care of you</p>
                 </div>
             </div>
         </header>
@@ -54,17 +61,26 @@
                         </ul>
                     </div>
                     <div class="col-md-9">
+                        <nav aria-label="... " class="d-flex justify-content-center">
+                            <ul class="pagination pagination-sm">
+                                <li class="page-item active" aria-current="page">
+                                    <span class="page-link">1</span>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="Home?page=2">2</a></li>
+                                <li class="page-item"><a class="page-link" href="Home?page=3">3</a></li>
+                                <li class="page-item"><a class="page-link" href="Home?page=4">4</a></li>
+                            </ul>
+                        </nav>
                         <h2>Product</h2>
                         <c:choose>
                             <c:when test="${listProduct==null ||listProduct.size() ==0}">We don't have that</c:when>
                         </c:choose>
+                        
                         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                             <c:forEach items="${listProduct}" var="P">
                                 <div class="col mb-5">
                                     <div class="card h-100">
-                                        <!-- Sale badge-->
-                                        <!--                                    <div class="badge bg-dark text-white position-absolute"
-                                                                                 style="top: 0.5rem; right: 0.5rem">Sale</div>-->
+
                                         <!-- Product image-->
                                         <a href="Detail?productId=${P.id}">
                                             <img class="card-img-top" src="${P.image}"
@@ -85,7 +101,6 @@
                                                     <div class="bi-star-fill"></div>
                                                 </div>
                                                 <!-- Product price-->
-                                                <!--                                            <span class="text-muted text-decoration-line-through">$20.00</span>-->
                                                 $${P.price}
                                             </div>
                                         </div>
@@ -99,6 +114,7 @@
                             </c:forEach>
 
                         </div>
+
                     </div>
                 </div>
 

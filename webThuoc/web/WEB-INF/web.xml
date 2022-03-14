@@ -52,6 +52,10 @@
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>controller.LogoutServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AboutServlet</servlet-name>
+        <servlet-class>controller.AboutServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginSevlet</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -103,6 +107,10 @@
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/Logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AboutServlet</servlet-name>
+        <url-pattern>/about</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -5,20 +5,18 @@
  */
 package controller;
 
-import dao.AccountDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Account;
 
 /**
  *
  * @author hellb
  */
-public class SignUpSevlet extends HttpServlet {
+public class AboutServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,29 +30,7 @@ public class SignUpSevlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String user = request.getParameter("username");
-        String pass = request.getParameter("password");
-        String repass = request.getParameter("re-password");
-        String displayname = request.getParameter("displayname");
-        String address = request.getParameter("address");
-        String email = request.getParameter("email");
-        String phone = request.getParameter("phone");
-        String avatar = request.getParameter("avatar");
-        
-        if(!pass.equals(repass)){
-            request.setAttribute("mess", "Wrong Re-Password");
-            request.getRequestDispatcher("SignUp.jsp").forward(request, response);
-        }else{
-            AccountDAO acc = new AccountDAO();
-            Account a = acc.checkAccExist(user);
-            if(a == null){
-                acc.SignUp(user, pass, displayname, address, email, phone, avatar);
-                request.getRequestDispatcher("Login").forward(request, response);
-            }else{
-                request.setAttribute("mess", "Username already");
-                request.getRequestDispatcher("SignUp.jsp").forward(request, response);
-            }
-        }
+        request.getRequestDispatcher("about.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
