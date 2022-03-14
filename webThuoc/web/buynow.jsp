@@ -20,17 +20,33 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="a.css" rel="stylesheet" />
+        <style>
+            .buynowform{
+                border: 1px solid #000; 
+                border-radius: 10px; 
+                padding: 1rem;
+                max-width: 540px; 
+                background-color: #F7F7F7;
+/*                text-align: center*/
+                margin: auto;
+            }
+            .buynowform .form-control{
+/*                text-align: center*/
+            }
+            .buynowform input{
+                max-width: 100%
+            }
+        </style>
     </head>
 
     <body>
         <%@include file="component/narBarComponent.jsp" %>
         <!-- Product section-->
         <section class="py-5">
+
             <div class="container" style="min-height: 600px">
-                <c:if test="${sessionScope.carts.size() ==0}">
-                    <h2>List Carts don't have anything.</h2>
-                </c:if>
-                <c:if test="${sessionScope.carts.size()!=0}">
+                <h1 style="text-align: center" >Buy Now</h1>
+                <div>
                     <h2>List Carts</h2>
                     <table class="table">
                         <thead>
@@ -41,7 +57,6 @@
                                 <th scope="col">Price</th>
                                 <th scope="col">Quantity</th>
                                 <th scope="col">Total</th>
-                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -53,20 +68,47 @@
                                 <td>${C.value.product.name}</td>
                                 <td><img src="${C.value.product.image}" width="50"/></td>
                                 <td>${C.value.product.price}</td>
-                                <td><input name="quantity" onchange="this.form.submit()" value="${C.value.quantity}" style="max-width: 60px" type="number" min="1" max="${C.value.product.quantity}"/></td>
+                                <td>${C.value.quantity}</td>
                                 <td>${C.value.product.price*C.value.quantity}</td>
-                                <td><a href="deletecart?productId=${C.value.product.id}" class="btn btn-outline-danger"><i class="bi bi-trash"></i> Delete</a></td>
                                 </tr>
                             </form>
                         </c:forEach>
                         </tbody>
                     </table>
-                    <h3>Total: $${totalMoney}</h3>
 
-                    <a href="buynow" class="btn btn-outline-success w-20">Buy Now</a>
+                    <div class="row">
+                        <div class="col-md-8"></div>
+                        <div class="col-md-4"><h3  >Total Money: $${totalMoney}</h3></div>
+                    </div>
 
+                    <div class="buynowform " >
+                        <h3>Information of customer</h3>
+                        <form action="buynow" method="POST">
+                            <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" aria-describedby="name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone</label>
+                            <input type="text" class="form-control" id="phone" name="phone" aria-describedby="phone">
+                        </div>
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Address</label>
+                            <input type="text" class="form-control" id="address" name="address" aria-describedby="address">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="text" class="form-control" id="email" name="email" aria-describedby="email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="note" class="form-label">Note</label>
+                            <textarea class="form-control" id="note" name="note" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Submit</button>
+                        </form>
+                    </div>
 
-                </c:if>
+                </div>
 
             </div>
         </section>
@@ -76,7 +118,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
-
     </body>
 
 </html>

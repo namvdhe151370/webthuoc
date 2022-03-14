@@ -37,8 +37,20 @@
         <servlet-class>controller.DeleteCartServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>buynowServlet</servlet-name>
-        <servlet-class>controller.buynowServlet</servlet-class>
+        <servlet-name>UpdateCartServlet</servlet-name>
+        <servlet-class>controller.UpdateCartServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BuyNowServlet</servlet-name>
+        <servlet-class>controller.BuyNowServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ThankServlet</servlet-name>
+        <servlet-class>controller.ThankServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>controller.LogoutServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginSevlet</servlet-name>
@@ -77,8 +89,20 @@
         <url-pattern>/deletecart</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>buynowServlet</servlet-name>
+        <servlet-name>UpdateCartServlet</servlet-name>
+        <url-pattern>/updatecart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BuyNowServlet</servlet-name>
         <url-pattern>/buynow</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ThankServlet</servlet-name>
+        <url-pattern>/thank</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/Logout</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

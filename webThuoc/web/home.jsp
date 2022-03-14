@@ -20,6 +20,13 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="a.css" rel="stylesheet" />
+        <style>
+            .row ul li a{
+                text-decoration: none;
+                color: cadetblue;
+                font-weight: bold;
+            }
+        </style>
     </head>
 
     <body>
@@ -40,7 +47,7 @@
                     <div class="col-md-3 mb-3">
                         <h2>List Catergories</h2>
 
-                        <ul class="list-group categorylink">
+                        <ul class="list-group categoryul">
                             <c:forEach items="${sessionScope.listCategory}" var="C">
                                 <li class="list-group-item "><a class="categorylink" href="categoryselect?categoryid=${C.id}">${C.name}</a></li>
                                 </c:forEach>
@@ -84,7 +91,7 @@
                                         </div>
                                         <!-- Product actions-->
                                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="addtocart?productid=${P.id}">Add to
+                                            <div class="text-center"><a class="btn btn-outline-success mt-auto" href="addtocart?productid=${P.id}">Add to
                                                     cart</a></div>
                                         </div>
                                     </div>
@@ -99,10 +106,10 @@
         </section>
 
         <%@include file="component/footerComponent.jsp" %>
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
-    <script src="js/scripts.js"></script>
-</body>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
 
 </html>

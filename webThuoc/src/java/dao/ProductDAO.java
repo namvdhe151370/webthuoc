@@ -16,7 +16,7 @@ import model.Product;
  *
  * @author hellb
  */
-public class ProductDAO extends BaseDAO<Category> {
+public class ProductDAO extends BaseDAO<Product> {
 
     public List<Product> getListProduct() {
         List<Product> list = new ArrayList<>();

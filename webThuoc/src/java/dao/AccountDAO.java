@@ -11,7 +11,7 @@ public class AccountDAO extends BaseDAO<Account> {
 
     public Account login(String user, String pass) {
         String sql = "select * from Account \n"
-                + "where AccUser = ? and AccPassword = ?";
+                + "where UserName = ? and Password = ?";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, user);
@@ -22,6 +22,11 @@ public class AccountDAO extends BaseDAO<Account> {
                 a.setId(rs.getInt(1));
                 a.setUser(rs.getString(2));
                 a.setPass(rs.getString(3));
+                a.setDisplayName(rs.getString(4));
+                a.setAddress(rs.getString(5));
+                a.setEmail(rs.getString(6));
+                a.setPhone(rs.getString(7));
+                a.setAvatar(rs.getString(8));
                 return a;
             }
         } catch (Exception e) {
@@ -31,7 +36,7 @@ public class AccountDAO extends BaseDAO<Account> {
 
     public Account checkAccExist(String user) {
         String sql = "select * from Account \n"
-                + "where AccUser = ?";
+                + "where UserName = ?";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, user);

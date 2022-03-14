@@ -37,7 +37,7 @@
 </head>
 <body>
 <div class="login-form">
-    <form action="Login" method="post">
+    <form action="Login" method="Post">
         <h2 class="text-center">Log in</h2> 
         <p class="text-danger">${mess}</p>
         <div class="form-group">
@@ -50,7 +50,7 @@
             <button type="submit" class="btn btn-primary btn-block">Log in</button>
         </div>
         <div class="clearfix">
-            <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
+            <label class="pull-left checkbox-inline"><input name="remember" type="checkbox"> Remember me</label>
             <a href="#" class="pull-right">Forgot Password?</a>
         </div>  
         

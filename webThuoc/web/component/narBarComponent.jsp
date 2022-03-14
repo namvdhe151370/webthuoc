@@ -4,6 +4,7 @@
     Author     : hellb
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -11,7 +12,8 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#!">Start Bootstrap</a>
+                
+                <img class="" style="max-width: 8%" src="images/logo1.png" alt="..." />
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                         aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -43,7 +45,19 @@
                             <span class="badge bg-success text-white ms-1 rounded-pill">${sessionScope.carts.size()}</span>
                         </a>
                     </div>
-                    <a href="Login.jsp" class="btn btn-outline-success">Login</a>
+                        <c:choose>
+                            <c:when test="${sessionScope.account!=null}">
+                                <img class="card-img-top" style="max-width: 50px;border-radius: 50%" src="${sessionScope.account.avatar}"
+                                                 alt="..." />
+                                <a class="btn btn-outline-success ms-2 me-2">${sessionScope.account.displayName}</a>
+                                
+                                <a href="Logout" class="btn btn-outline-success ">Logout</a>
+                            </c:when>
+                            <c:otherwise>
+                                <a href="Login" class="btn btn-outline-success">Login</a>
+                            </c:otherwise>
+                        </c:choose>
+                    
                 </div>
             </div>
         </nav>
