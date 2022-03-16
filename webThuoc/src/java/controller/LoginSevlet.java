@@ -41,10 +41,12 @@ public class LoginSevlet extends HttpServlet {
             }
         }
         if(username!=null &&password!=null){
-            Account account = new AccountDAO().login(username, password);
+            AccountDAO adao = new AccountDAO();
+            Account account = adao.login(username, password);
             if(account !=null){
                 request.getSession().setAttribute("account", account);
                 response.sendRedirect("Home");
+                return;
             }
         }
         request.getRequestDispatcher("Login.jsp").forward(request, response);
@@ -53,16 +55,16 @@ public class LoginSevlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String user = request.getParameter("username");
-        String pass = request.getParameter("password");
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
         boolean remember = request.getParameter("remember") !=null;
         AccountDAO accDAO = new AccountDAO();
-        Account account = accDAO.login(user, pass);
+        Account account = accDAO.login(username, password);
         if(account!=null){
             if(remember){
-                Cookie userCookie = new Cookie("user", user);
+                Cookie userCookie = new Cookie("username", username);
                 userCookie.setMaxAge(60*60*24*3);
-                Cookie passCookie = new Cookie("pass", pass);
+                Cookie passCookie = new Cookie("password", password);
                 passCookie.setMaxAge(60*60*24*3);
                 response.addCookie(userCookie);
                 response.addCookie(passCookie);
@@ -72,7 +74,7 @@ public class LoginSevlet extends HttpServlet {
         }else{
             
             request.setAttribute("mess", "Wrong Username or Password");
-            request.getRequestDispatcher("Login.jsp").include(request, response);
+            request.getRequestDispatcher("Login.jsp").forward(request, response);
     }
     }
     @Override

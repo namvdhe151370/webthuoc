@@ -39,7 +39,28 @@ public class ProductDAO extends BaseDAO<Product> {
         }
         return list;
     }
-
+    public List<Product> getListProductPagg(int page, int PAZE_SIZE) {
+        List<Product> list = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM product";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                Product Product = new Product(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getInt(3),
+                        rs.getDouble(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getInt(8));
+                list.add(Product);
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+    
     public List<Product> getlistProductByCid(int categoryid) {
         List<Product> list = new ArrayList<>();
         try {

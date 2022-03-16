@@ -56,6 +56,18 @@
         <servlet-name>AboutServlet</servlet-name>
         <servlet-class>controller.AboutServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AdminServlet</servlet-name>
+        <servlet-class>controller.AdminServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManagerServlet</servlet-name>
+        <servlet-class>controller.ManagerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteProductServlet</servlet-name>
+        <servlet-class>controller.DeleteProductServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginSevlet</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -111,6 +123,26 @@
     <servlet-mapping>
         <servlet-name>AboutServlet</servlet-name>
         <url-pattern>/about</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminServlet</servlet-name>
+        <url-pattern>/admin/checkadmin</url-pattern>
+    </servlet-mapping>
+    <filter-mapping>
+        <filter-name>CheckloginFilter</filter-name>
+        <url-pattern/>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthorFilter</filter-name>
+        <url-pattern/>
+    </filter-mapping>
+    <servlet-mapping>
+        <servlet-name>ManagerServlet</servlet-name>
+        <url-pattern>/managerproduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteProductServlet</servlet-name>
+        <url-pattern>/deleteproduct</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -8,6 +8,7 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,6 +32,21 @@ public class LogoutServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.getSession().removeAttribute("account");
+        
+        Cookie[] cookie = request.getCookies();
+        
+        for (Cookie cookie1 : cookie) {
+            if(cookie1.getName().equals("usename")){
+                cookie1.setMaxAge(0);
+                response.addCookie(cookie1);
+            }
+            if(cookie1.getName().equals("password")){
+                cookie1.setMaxAge(0);
+                response.addCookie(cookie1);
+            }
+            
+        }
+        request.getSession().removeAttribute("carts");
         response.sendRedirect("Login");
     }
 

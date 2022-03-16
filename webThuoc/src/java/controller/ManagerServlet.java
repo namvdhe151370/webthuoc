@@ -5,7 +5,6 @@
  */
 package controller;
 
-import dao.CategoryDAO;
 import dao.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,14 +14,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.Category;
+import model.Account;
 import model.Product;
 
 /**
  *
  * @author hellb
  */
-public class HomeSevlet extends HttpServlet {
+public class ManagerServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,24 +35,14 @@ public class HomeSevlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        ProductDAO Pdao = new ProductDAO();
-        CategoryDAO Cdao = new CategoryDAO();
-        List<Category> listCategory = Cdao.getListCategory();
-        
-        
         HttpSession session = request.getSession();
-        session.setAttribute("listCategory", listCategory);
-//        request.setAttribute("listCategory", listCategory);
-        int page = 1;
-        String pages = request.getParameter("page");
-        if(pages !=null){
-            page = Integer.parseInt(pages);
-        }
-        final int PAZE_SIZE = 7;
-        session.setAttribute("backUrl", "Home");
-        List<Product> listProduct = Pdao.getListProductPagg(page, PAZE_SIZE);
-        request.setAttribute("listProduct", listProduct);
-        request.getRequestDispatcher("home.jsp").forward(request, response);
+        Account account = (Account) session.getAttribute("account");
+        int id = account.getId();
+        ProductDAO pdao = new ProductDAO();
+        List<Product> list = pdao.getListProduct();
+        
+        request.setAttribute("listP", list);
+        request.getRequestDispatcher("manager.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

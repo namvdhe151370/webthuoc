@@ -10,6 +10,8 @@ package model;
  * @author hellb
  */
 public class Account {
+    public static final String ADMIN = "ADMIN";
+    private static final String USER = "USER";
     private int id;
     private String user;
     private String pass;
@@ -18,11 +20,12 @@ public class Account {
     private String email;
     private String Phone;
     private String avatar;
+    private String role;
 
     public Account() {
     }
 
-    public Account(int id, String user, String pass, String displayName, String Address, String email, String Phone, String avatar) {
+    public Account(int id, String user, String pass, String displayName, String Address, String email, String Phone, String avatar, String role) {
         this.id = id;
         this.user = user;
         this.pass = pass;
@@ -31,9 +34,10 @@ public class Account {
         this.email = email;
         this.Phone = Phone;
         this.avatar = avatar;
+        this.role = role;
     }
 
-    public Account(String user, String pass, String displayName, String Address, String email, String Phone, String avatar) {
+    public Account(String user, String pass, String displayName, String Address, String email, String Phone, String avatar, String role) {
         this.user = user;
         this.pass = pass;
         this.displayName = displayName;
@@ -41,7 +45,18 @@ public class Account {
         this.email = email;
         this.Phone = Phone;
         this.avatar = avatar;
+        this.role = role;
     }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+    
+    
 
     public int getId() {
         return id;
@@ -109,8 +124,10 @@ public class Account {
 
     @Override
     public String toString() {
-        return "Account{" + "id=" + id + ", user=" + user + ", pass=" + pass + ", displayName=" + displayName + ", Address=" + Address + ", email=" + email + ", Phone=" + Phone + ", avatar=" + avatar + '}';
+        return "Account{" + "id=" + id + ", user=" + user + ", pass=" + pass + ", displayName=" + displayName + ", Address=" + Address + ", email=" + email + ", Phone=" + Phone + ", avatar=" + avatar + ", role=" + role + '}';
     }
+
+    
 
     
 }

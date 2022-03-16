@@ -26,6 +26,7 @@ public class AccountDAO extends BaseDAO<Account> {
                 a.setEmail(rs.getString(6));
                 a.setPhone(rs.getString(7));
                 a.setAvatar(rs.getString(8));
+                a.setRole(rs.getString(9));
                 return a;
             }
         } catch (Exception e) {
@@ -51,6 +52,7 @@ public class AccountDAO extends BaseDAO<Account> {
                 a.setEmail(rs.getString(6));
                 a.setPhone(rs.getString(7));
                 a.setAvatar(rs.getString(8));
+                a.setRole(rs.getString(9));
                 return a;
             }
         } catch (Exception e) {
@@ -86,7 +88,7 @@ public class AccountDAO extends BaseDAO<Account> {
 
     public static void main(String[] args) {
         AccountDAO c = new AccountDAO();
-        System.out.println(c.checkAccExist("admin"));
+        System.out.println(c.login("admin", "admin"));
     }
 
     
