@@ -39,19 +39,26 @@ public class HomeSevlet extends HttpServlet {
         ProductDAO Pdao = new ProductDAO();
         CategoryDAO Cdao = new CategoryDAO();
         List<Category> listCategory = Cdao.getListCategory();
-        
-        
+
         HttpSession session = request.getSession();
         session.setAttribute("listCategory", listCategory);
 //        request.setAttribute("listCategory", listCategory);
         int page = 1;
         String pages = request.getParameter("page");
-        if(pages !=null){
+        if (pages != null) {
             page = Integer.parseInt(pages);
         }
-        final int PAZE_SIZE = 7;
+        final int PAZE_SIZE = 6;
         session.setAttribute("backUrl", "Home");
         List<Product> listProduct = Pdao.getListProductPagg(page, PAZE_SIZE);
+        
+        int totalProduct = Pdao.getTotalProduct();
+        int totalPage = totalProduct / PAZE_SIZE;
+        if (totalPage % PAZE_SIZE != 0) {
+            totalPage += 1;
+        }
+        request.setAttribute("page", page);
+        request.setAttribute("totalPage", totalPage);
         request.setAttribute("listProduct", listProduct);
         request.getRequestDispatcher("home.jsp").forward(request, response);
     }

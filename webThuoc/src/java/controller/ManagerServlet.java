@@ -5,6 +5,7 @@
  */
 package controller;
 
+import dao.CategoryDAO;
 import dao.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Account;
+import model.Category;
 import model.Product;
 
 /**
@@ -34,15 +36,19 @@ public class ManagerServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        
+        request.setCharacterEncoding("UTF-8");
+        
         HttpSession session = request.getSession();
         Account account = (Account) session.getAttribute("account");
         int id = account.getId();
         ProductDAO pdao = new ProductDAO();
+        CategoryDAO cdao = new CategoryDAO();
         List<Product> list = pdao.getListProduct();
-        
+        List<Category> listC = cdao.getListCategory();
         request.setAttribute("listP", list);
-        request.getRequestDispatcher("manager.jsp").forward(request, response);
+        request.setAttribute("listC", listC);
+        request.getRequestDispatcher("../managerproduct.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

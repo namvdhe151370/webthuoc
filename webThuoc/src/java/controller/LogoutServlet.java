@@ -47,7 +47,7 @@ public class LogoutServlet extends HttpServlet {
             
         }
         request.getSession().removeAttribute("carts");
-        response.sendRedirect("Login");
+        response.sendRedirect("http://localhost:8080/webThuoc/Login");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

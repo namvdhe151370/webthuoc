@@ -13,7 +13,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Shop Homepage - Start Bootstrap Template</title>
+        <title>Thanks from Neo Shin Shop</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -38,9 +38,9 @@
 <!--            <div class="thanksnam">
             </div>-->
             <div class="thanksnam alert alert-primary text-center align-items-center" role="alert">
-                Orders successfully. Thank you for purchasing from us.
+                
                 <div class="text-center mt-2">
-                    <a class="btn btn-outline-success" href="Home">Continue Shopping</a>
+                    <a class="btn btn-outline-primary" href="Home">Continue Shopping</a>
                 </div>
             </div>
         </div>

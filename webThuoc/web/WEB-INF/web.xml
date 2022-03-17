@@ -57,16 +57,28 @@
         <servlet-class>controller.AboutServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AdminServlet</servlet-name>
-        <servlet-class>controller.AdminServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>ManagerServlet</servlet-name>
         <servlet-class>controller.ManagerServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DeleteProductServlet</servlet-name>
         <servlet-class>controller.DeleteProductServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddProductServlet</servlet-name>
+        <servlet-class>controller.AddProductServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditProductServlet</servlet-name>
+        <servlet-class>controller.EditProductServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CheckEditProductServlet</servlet-name>
+        <servlet-class>controller.CheckEditProductServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddformProductServlet</servlet-name>
+        <servlet-class>controller.AddformProductServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginSevlet</servlet-name>
@@ -124,10 +136,6 @@
         <servlet-name>AboutServlet</servlet-name>
         <url-pattern>/about</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AdminServlet</servlet-name>
-        <url-pattern>/admin/checkadmin</url-pattern>
-    </servlet-mapping>
     <filter-mapping>
         <filter-name>CheckloginFilter</filter-name>
         <url-pattern/>
@@ -138,11 +146,27 @@
     </filter-mapping>
     <servlet-mapping>
         <servlet-name>ManagerServlet</servlet-name>
-        <url-pattern>/managerproduct</url-pattern>
+        <url-pattern>/admin/managerproduct</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DeleteProductServlet</servlet-name>
-        <url-pattern>/deleteproduct</url-pattern>
+        <url-pattern>/admin/deleteproduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddProductServlet</servlet-name>
+        <url-pattern>/admin/addproduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditProductServlet</servlet-name>
+        <url-pattern>/admin/editproduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckEditProductServlet</servlet-name>
+        <url-pattern>/admin/checkeditproduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddformProductServlet</servlet-name>
+        <url-pattern>/admin/addformproduct</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -20,7 +20,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="a.css" rel="stylesheet" />
-
+        <!--        <link href="css/a.css" rel="stylesheet" type="text/css"/>-->
         <style>
             .namh1 h1{
                 color: green;
@@ -63,19 +63,16 @@
                     <div class="col-md-9">
                         <nav aria-label="... " class="d-flex justify-content-center">
                             <ul class="pagination pagination-sm">
-                                <li class="page-item active" aria-current="page">
-                                    <span class="page-link">1</span>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="Home?page=2">2</a></li>
-                                <li class="page-item"><a class="page-link" href="Home?page=3">3</a></li>
-                                <li class="page-item"><a class="page-link" href="Home?page=4">4</a></li>
+                                <c:forEach begin="1" end="${totalPage}" var="i">
+                                    <li class="page-item ${i==page?"active":""}"><a class="page-link" href="Home?page=${i}">${i}</a></li>
+                                    </c:forEach> 
                             </ul>
                         </nav>
                         <h2>Product</h2>
                         <c:choose>
                             <c:when test="${listProduct==null ||listProduct.size() ==0}">We don't have that</c:when>
                         </c:choose>
-                        
+
                         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                             <c:forEach items="${listProduct}" var="P">
                                 <div class="col mb-5">

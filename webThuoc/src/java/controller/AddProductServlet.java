@@ -12,12 +12,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.Account;
 
 /**
  *
  * @author hellb
  */
-public class DeleteProductServlet extends HttpServlet {
+public class AddProductServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,11 +33,22 @@ public class DeleteProductServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String pid = request.getParameter("pid");
+        request.setCharacterEncoding("UTF-8");
+       
+        String name = request.getParameter("name");
+        String image = request.getParameter("image");
+        String price = request.getParameter("price");
+        String quantity = request.getParameter("quantity");
+        String description = request.getParameter("description");
+        String category = request.getParameter("category");
+
+        HttpSession session = request.getSession();
+        Account account = (Account) session.getAttribute("account");
+//        int cid = account.getId();
+
         ProductDAO pdao = new ProductDAO();
-        
-        pdao.deleteProduct(pid);
-        response.sendRedirect("../admin/managerproduct");
+        pdao.insertProduct(name, image, price, quantity, description, category);
+        response.sendRedirect("managerproduct");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

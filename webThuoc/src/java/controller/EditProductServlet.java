@@ -5,19 +5,23 @@
  */
 package controller;
 
+import dao.CategoryDAO;
 import dao.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Category;
+import model.Product;
 
 /**
  *
  * @author hellb
  */
-public class DeleteProductServlet extends HttpServlet {
+public class EditProductServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,11 +35,14 @@ public class DeleteProductServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String pid = request.getParameter("pid");
-        ProductDAO pdao = new ProductDAO();
-        
-        pdao.deleteProduct(pid);
-        response.sendRedirect("../admin/managerproduct");
+        int productId = Integer.parseInt(request.getParameter("pid"));
+        ProductDAO Pdao = new ProductDAO();
+        Product productById = Pdao.getproductById(productId);
+        CategoryDAO cdao = new CategoryDAO();
+        List<Category> listC = cdao.getListCategory();
+        request.setAttribute("product", productById);
+        request.setAttribute("listC", listC);
+        request.getRequestDispatcher("../edit.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
