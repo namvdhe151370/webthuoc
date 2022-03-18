@@ -170,10 +170,10 @@ public class ProductDAO extends BaseDAO<Product> {
             String sql = "insert into Product (Pname, quantity, price, [description], images, C_id) \n"
                     + "values (?,?,?,?,?,?);";
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, name);
+            statement.setNString(1, name);
             statement.setString(2, quantity);
-            statement.setString(3, price);
-            statement.setString(4, description);
+            statement.setDouble(3, Double.parseDouble(price));
+            statement.setNString(4, description);
             statement.setString(5, image);
             statement.setString(6, category);
             statement.executeUpdate();
@@ -181,7 +181,8 @@ public class ProductDAO extends BaseDAO<Product> {
         }
 
     }
-
+    
+    
     public void editProduct(String name, String quantity, String price, String description, String image, String category, String pid) {
 
         try {
@@ -194,10 +195,10 @@ public class ProductDAO extends BaseDAO<Product> {
                     + "      ,[C_id] = ?\n"
                     + " WHERE Pid = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, name);
+            statement.setNString(1, name);
             statement.setString(2, quantity);
-            statement.setString(3, price);
-            statement.setString(4, description);
+            statement.setDouble(3, Double.parseDouble(price));
+            statement.setNString(4, description);
             statement.setString(5, image);
             statement.setString(6, category);
             statement.setString(7, pid);
@@ -211,7 +212,7 @@ public class ProductDAO extends BaseDAO<Product> {
     public static void main(String[] args) {
         ProductDAO c = new ProductDAO();
         
-        System.out.println(c.getTotalProduct());
+        c.editProduct("a","1","1","a","a","1","49");
     }
 
 }

@@ -35,14 +35,8 @@ public class EditProductServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        int productId = Integer.parseInt(request.getParameter("pid"));
-        ProductDAO Pdao = new ProductDAO();
-        Product productById = Pdao.getproductById(productId);
-        CategoryDAO cdao = new CategoryDAO();
-        List<Category> listC = cdao.getListCategory();
-        request.setAttribute("product", productById);
-        request.setAttribute("listC", listC);
-        request.getRequestDispatcher("../edit.jsp").forward(request, response);
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -57,7 +51,17 @@ public class EditProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        request.setCharacterEncoding("UTF-8");
+        
+        int productId = Integer.parseInt(request.getParameter("pid"));
+        ProductDAO Pdao = new ProductDAO();
+        Product productById = Pdao.getproductById(productId);
+        CategoryDAO cdao = new CategoryDAO();
+        List<Category> listC = cdao.getListCategory();
+        request.setAttribute("product", productById);
+        request.setAttribute("listC", listC);
+//        response.getWriter().print(productId);
+        request.getRequestDispatcher("../edit.jsp").forward(request, response);
     }
 
     /**
@@ -71,7 +75,18 @@ public class EditProductServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        request.setCharacterEncoding("UTF-8");
+        String pid = request.getParameter("id");
+        String name = request.getParameter("name");
+        String image = request.getParameter("image");
+        String price = request.getParameter("price");
+        String quantity = request.getParameter("quantity");
+        String description = request.getParameter("description");
+        String category = request.getParameter("category");
+
+        ProductDAO pdao = new ProductDAO();
+        pdao.editProduct(name, quantity, price, description, image, category, pid);
+        response.sendRedirect("managerproduct");
     }
 
     /**

@@ -73,6 +73,7 @@
     </head>
 
     <body>
+        
         <%@include file="component/narBarComponentManager.jsp" %>
         <!-- Header-->
         <div class="tableform container" style="min-height: 600px">
@@ -84,7 +85,7 @@
                     <div class="col-sm-6">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
 
-                                <li class="nav-item"><a href="#addEmployeeModal"  class="btn btn-success" data-toggle="modal"><i class="bi bi-file-plus"></i> <span>Add New Product</span></a></li>
+                                <li class="nav-item"><a href="../admin/addproduct"  class="btn btn-success" data-toggle="modal"><i class="bi bi-file-plus"></i> <span>Add New Product</span></a></li>
                             </ul>
                         <!--                        <a data-target="#addEmployeeModal"  class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Product</span></a>-->
                         <!--                    <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						-->

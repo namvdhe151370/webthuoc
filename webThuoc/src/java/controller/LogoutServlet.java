@@ -43,9 +43,9 @@ public class LogoutServlet extends HttpServlet {
             if(cookie1.getName().equals("password")){
                 cookie1.setMaxAge(0);
                 response.addCookie(cookie1);
-            }
-            
+            }    
         }
+        
         request.getSession().removeAttribute("carts");
         response.sendRedirect("http://localhost:8080/webThuoc/Login");
     }

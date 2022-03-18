@@ -31,7 +31,7 @@
         <div class="container">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form action="../admin/checkeditproduct" method="post">
+                        <form action="../admin/editproduct" method="post">
                             <div class="modal-header">						
                                 <h4 class="modal-title">Edit Product</h4>
                                 <a href="../admin/managerproduct" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</a>

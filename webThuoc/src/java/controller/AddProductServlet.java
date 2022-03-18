@@ -5,15 +5,19 @@
  */
 package controller;
 
+import dao.CategoryDAO;
 import dao.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Account;
+import model.Category;
+import model.Product;
 
 /**
  *
@@ -33,22 +37,7 @@ public class AddProductServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
-       
-        String name = request.getParameter("name");
-        String image = request.getParameter("image");
-        String price = request.getParameter("price");
-        String quantity = request.getParameter("quantity");
-        String description = request.getParameter("description");
-        String category = request.getParameter("category");
-
-        HttpSession session = request.getSession();
-        Account account = (Account) session.getAttribute("account");
-//        int cid = account.getId();
-
-        ProductDAO pdao = new ProductDAO();
-        pdao.insertProduct(name, image, price, quantity, description, category);
-        response.sendRedirect("managerproduct");
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -63,7 +52,19 @@ public class AddProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        request.setCharacterEncoding("UTF-8");
+        
+        HttpSession session = request.getSession();
+        Account account = (Account) session.getAttribute("account");
+        int id = account.getId();
+        ProductDAO pdao = new ProductDAO();
+        CategoryDAO cdao = new CategoryDAO();
+        List<Product> list = pdao.getListProduct();
+        List<Category> listC = cdao.getListCategory();
+        request.setAttribute("listP", list);
+        request.setAttribute("listC", listC);
+        request.getRequestDispatcher("../addproduct.jsp").forward(request, response);
+        
     }
 
     /**
@@ -77,7 +78,24 @@ public class AddProductServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        request.setCharacterEncoding("UTF-8");
+        
+        String name = request.getParameter("name");
+        String image = request.getParameter("image");
+        String price = request.getParameter("price");
+        String quantity = request.getParameter("quantity");
+        String description = request.getParameter("description");
+        String category = request.getParameter("category");
+
+        HttpSession session = request.getSession();
+        Account account = (Account) session.getAttribute("account");
+//        int cid = account.getId();
+
+        ProductDAO pdao = new ProductDAO();
+//        System.out.println(name);
+//        System.out.println("Nê tần hoàng");
+        pdao.insertProduct(name, image, price, quantity, description, category);
+        response.sendRedirect("managerproduct");
     }
 
     /**
