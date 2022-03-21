@@ -46,7 +46,7 @@
                                      alt="..." />
                                 ${sessionScope.account.displayName}
                             </div>
-                            <a href="../Logout" class="btn btn-outline-success ms-2">Logout</a>
+                            <a href="Logout" class="btn btn-outline-success ms-2">Logout</a>
                         </c:when>
                         <c:otherwise>
                             <a href="Login" class="btn btn-outline-success">Login</a>
