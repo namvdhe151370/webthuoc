@@ -91,13 +91,14 @@
                 <thead>
                     <tr>
                         <th scope="col">Order ID</th>
-                        <th scope="col">Account Id</th>
+
                         <th scope="col">Total Price</th>
                         <th scope="col">Note</th>
                         <th scope="col">Date Buying</th>
-                        <th scope="col">Shipping Id</th>
+
                         <th scope="col">Status</th>
                         <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -105,21 +106,29 @@
 
                         <tr>
                             <td>${o.id}</td>
-                            <td>${o.accountId}</td>
+
                             <td>${o.totalPrice}</td>
                             <td>${o.note}</td>
                             <td>${o.createdate}</td>
-                            <td>${o.shippingId}</td>
+
                             <td><c:if test="${o.statusOrder == 1}"><p>Shipping</p>
                                 </c:if>
                                 <c:if test="${o.statusOrder == 2}"><p>Done</p>
                                 </c:if>
-                                <c:if test="${o.statusOrder == 3}"><p>Cancel</p>
-                                </c:if>
+                                
                             </td>
-                            <td><a href="../admin/editorder?oid=${o.id}&shid=${o.shippingId}"  class="edit btn btn-outline-primary" data-toggle="modal"><i class="bi bi-pencil-square"></i>View&Edit</a></td>
-                        
+                            <td><a href="../admin/editorder?oid=${o.id}&shid=${o.shippingId}"  class="edit btn btn-outline-primary" data-toggle="modal"><i class="bi bi-pencil-square"></i>Edit</a></td>
+                            
+                        <td><a onclick="doDelete(${o.id})" class="delete btn btn-outline-danger" data-toggle="modal"><i class="bi bi-trash"></i> Delete</a></td>
                         </tr>
+                    <script>
+                        function doDelete(id) {
+                            var c = confirm("Bạn có muốn xoá order: " + id + "?");
+                            if (c) {
+                                window.location.href = "../admin/deleteorder?oid=" + id;
+                            }
+                        }
+                    </script>
                    
                                                  
                     </c:forEach>

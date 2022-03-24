@@ -104,5 +104,16 @@ public class OrderDetailDAO extends BaseDAO<OrderDetail> {
         System.out.println(c.getOrderDetailById(16));
     }
 
+    public void deleteOrderDetail(String oid) {
+        try {
+            String sql = "DELETE FROM OrderDetail\n" +
+"                    WHERE order_id =  ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, oid);
+            statement.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
     
 }

@@ -69,15 +69,15 @@
 
                             <div class="form-group">
                                 <label>Total Price</label>
-                                <input value="${order.totalPrice}" name="totalPrice" type="text" class="form-control" readonly  required>
+                                <input value="${order.totalPrice}" name="totalPrice" type="text" class="form-control"   required>
                             </div>
                             <div class="form-group">
                                 <label>Note</label>
-                                <textarea name="note" class="form-control" readonly  required>${order.note}</textarea>
+                                <textarea name="note" class="form-control"   required>${order.note}</textarea>
                             </div>
                             <div class="form-group">
                                 <label>Date Buying</label>
-                                <input value="${order.createdate}" name="createdate" type="date" class="form-control" readonly  required>
+                                <input value="${order.createdate}" name="createdate" type="date" class="form-control"   required>
                             </div>
                             <div class="form-group">
                                 <label>Status</label>
@@ -85,7 +85,7 @@
                                 <select name="statusOrder" class="form-control" aria-label="Default select example">
                                         <option ${order.statusOrder == 1?"selected":""} value="1">Shipping</option>
                                         <option ${order.statusOrder == 2?"selected":""} value="2">Done</option>
-                                        <option ${order.statusOrder == 3?"selected":""} value="3">Cancel</option>
+                                        
                                     </select>
                             </div>
 

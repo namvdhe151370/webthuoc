@@ -10,6 +10,7 @@ import dao.OrderDAO;
 import dao.OrderDetailDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -66,12 +67,22 @@ public class EditOrderSevlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+         request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+//        int id = Integer.parseInt(request.getParameter("id"));
+//        int statusOrder = Integer.parseInt(request.getParameter("statusOrder"));
+//        OrderDAO odao = new OrderDAO();
+//        odao.editStatus(id,statusOrder);
+//        response.sendRedirect("managerorder");
         int id = Integer.parseInt(request.getParameter("id"));
+        double totalPrice = Double.parseDouble(request.getParameter("totalPrice"));
+        String note = request.getParameter("note");
+        String createdate = request.getParameter("createdate");
         int statusOrder = Integer.parseInt(request.getParameter("statusOrder"));
         OrderDAO odao = new OrderDAO();
-        odao.editStatus(id,statusOrder);
+        odao.editorder(id, totalPrice, note, createdate, statusOrder);
         response.sendRedirect("managerorder");
+        
     }
 
     /**

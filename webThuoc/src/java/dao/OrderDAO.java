@@ -5,11 +5,13 @@
  */
 package dao;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -61,7 +63,7 @@ public class OrderDAO extends BaseDAO<Order> {
                         rs.getInt(2),
                         rs.getDouble(3),
                         rs.getString(4),
-                        rs.getString(5),
+                        rs.getDate(5),
                         rs.getInt(6),
                         rs.getInt(7));
 
@@ -85,7 +87,7 @@ public class OrderDAO extends BaseDAO<Order> {
                         rs.getInt(2),
                         rs.getDouble(3),
                         rs.getString(4),
-                        rs.getString(5),
+                        rs.getDate(5),
                         rs.getInt(6),
                         rs.getInt(7));
                 return order;
@@ -95,7 +97,7 @@ public class OrderDAO extends BaseDAO<Order> {
         return null;
     }
 
-    public void editStatus(int id, int statusOrder){
+    public void editStatus(int id, int statusOrder) {
         try {
             String sql = "UPDATE Orders\n"
                     + "SET [Status] = ?\n"
@@ -109,9 +111,43 @@ public class OrderDAO extends BaseDAO<Order> {
         }
     }
 
+    public void editorder(int id, double totalPrice, String note, String createdate, int statusOrder) {
+        try {
+            String sql = "UPDATE Orders\n"
+                    + "   SET [totalPrice] = ?\n"
+                    + "      ,[note] = ?\n"
+                    + "      ,[created_date] = ?\n"
+                    + "      ,[Status] = ?\n"
+                    + " WHERE id = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setDouble(1, totalPrice);
+            statement.setString(2, note);
+            statement.setString(3, createdate);
+            statement.setInt(4, statusOrder);
+            statement.setInt(5, id);
+            statement.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
     public static void main(String[] args) {
         OrderDAO o = new OrderDAO();
-        o.editStatus(16,2);
+        o.editStatus(16, 2);
     }
+
+    public void deleteOrder(String oid) {
+       
+
+        try {
+            String sql = "DELETE FROM Orders\n" +
+"                    WHERE id = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, oid);
+            statement.executeUpdate();
+        } catch (Exception e) {
+        }
+
+    }    
 
 }

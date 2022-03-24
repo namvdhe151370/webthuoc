@@ -5,6 +5,9 @@
  */
 package model;
 
+import java.sql.Date;
+
+
 /**
  *
  * @author hellb
@@ -14,7 +17,7 @@ public class Order {
     private int accountId;
     private double totalPrice;
     private String note;
-    private String createdate;
+    private Date createdate;
     private int shippingId;
     private int statusOrder;
 
@@ -28,9 +31,7 @@ public class Order {
         this.shippingId = shippingId;
     }
 
-    
-    
-    public Order(int id, int accountId, double totalPrice, String note, String createdate, int shippingId, int statusOrder) {
+    public Order(int id, int accountId, double totalPrice, String note, Date createdate, int shippingId, int statusOrder) {
         this.id = id;
         this.accountId = accountId;
         this.totalPrice = totalPrice;
@@ -39,6 +40,10 @@ public class Order {
         this.shippingId = shippingId;
         this.statusOrder = statusOrder;
     }
+
+    
+    
+    
 
     public int getId() {
         return id;
@@ -72,13 +77,15 @@ public class Order {
         this.note = note;
     }
 
-    public String getCreatedate() {
+    public Date getCreatedate() {
         return createdate;
     }
 
-    public void setCreatedate(String createdate) {
+    public void setCreatedate(Date createdate) {
         this.createdate = createdate;
     }
+
+   
 
     public int getShippingId() {
         return shippingId;
