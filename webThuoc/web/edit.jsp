@@ -65,7 +65,7 @@
                                     <label>Category</label>
                                     <select name="category" class="form-select" aria-label="Default select example">
                                         <c:forEach items="${listC}" var="o">
-                                            <option value="${o.id}">${o.name}</option>
+                                            <option ${product.categoryid == o.id?"selected":""} value="${o.id}">${o.name}</option>
                                         </c:forEach>
                                     </select>
                                 </div>

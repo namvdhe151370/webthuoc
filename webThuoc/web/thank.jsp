@@ -40,7 +40,7 @@
             <div class="thanksnam alert alert-primary text-center align-items-center" role="alert">
                 
                 <div class="text-center mt-2">
-                    <a class="btn btn-outline-primary" href="Home">Continue Shopping</a>
+                    <a class="btn btn-primary" href="Home">Continue Shopping</a>
                 </div>
             </div>
         </div>

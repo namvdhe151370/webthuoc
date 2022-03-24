@@ -65,7 +65,7 @@
 
                     </div>
                     <div class="modal-footer">
-                        <input type="submit" class="btn btn-success" value="Edit">
+                        <input type="submit" class="btn btn-success" value="Add">
                     </div>
                 </form>
             </div>

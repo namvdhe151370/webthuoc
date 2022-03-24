@@ -53,7 +53,7 @@ public class AuthorFilter implements Filter {
             return;
         }
         req.setAttribute("mess", "You are not author.");
-        req.getRequestDispatcher("http://localhost:8080/webThuoc/Login").forward(request, response);
+        res.sendRedirect("../Login");
     }
 
     /**

@@ -117,9 +117,16 @@
                             <td>${o.price} $</td>
                             <td>${o.quantity}</td>
                             <td><a href="../admin/editproduct?pid=${o.id}"  class="edit btn btn-outline-primary" data-toggle="modal"><i class="bi bi-pencil-square"></i> Edit</a></td>
-                            <td><a href="../admin/deleteproduct?pid=${o.id}" class="delete btn btn-outline-danger" data-toggle="modal"><i class="bi bi-trash"></i> Delete</a></td>
+                            <td><a onclick="doDelete(${o.id},'${o.name}')" class="delete btn btn-outline-danger" data-toggle="modal"><i class="bi bi-trash"></i> Delete</a></td>
                         </tr>
-
+                    <script>
+                        function doDelete(id,name) {
+                            var c = confirm("Bạn có muốn xoá sản phẩm: " + name + "?");
+                            if (c) {
+                                window.location.href = "../admin/deleteproduct?pid=" + id;
+                            }
+                        }
+                    </script>
                     </c:forEach>
                 </tbody>
             </table>

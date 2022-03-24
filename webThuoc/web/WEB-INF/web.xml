@@ -80,6 +80,14 @@
         <servlet-name>AddformProductServlet</servlet-name>
         <servlet-class>controller.AddformProductServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ManagerOrder</servlet-name>
+        <servlet-class>controller.ManagerOrder</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditOrderSevlet</servlet-name>
+        <servlet-class>controller.EditOrderSevlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginSevlet</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -167,6 +175,14 @@
     <servlet-mapping>
         <servlet-name>AddformProductServlet</servlet-name>
         <url-pattern>/admin/addformproduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManagerOrder</servlet-name>
+        <url-pattern>/admin/managerorder</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditOrderSevlet</servlet-name>
+        <url-pattern>/admin/editorder</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -16,25 +16,9 @@ public class Order {
     private String note;
     private String createdate;
     private int shippingId;
+    private int statusOrder;
 
     public Order() {
-    }
-
-    public Order(int id, int accountId, double totalPrice, String note, String createdate, int shippingId) {
-        this.id = id;
-        this.accountId = accountId;
-        this.totalPrice = totalPrice;
-        this.note = note;
-        this.createdate = createdate;
-        this.shippingId = shippingId;
-    }
-
-    public Order(int accountId, double totalPrice, String note, String createdate, int shippingId) {
-        this.accountId = accountId;
-        this.totalPrice = totalPrice;
-        this.note = note;
-        this.createdate = createdate;
-        this.shippingId = shippingId;
     }
 
     public Order(int accountId, double totalPrice, String note, int shippingId) {
@@ -43,7 +27,19 @@ public class Order {
         this.note = note;
         this.shippingId = shippingId;
     }
+
     
+    
+    public Order(int id, int accountId, double totalPrice, String note, String createdate, int shippingId, int statusOrder) {
+        this.id = id;
+        this.accountId = accountId;
+        this.totalPrice = totalPrice;
+        this.note = note;
+        this.createdate = createdate;
+        this.shippingId = shippingId;
+        this.statusOrder = statusOrder;
+    }
+
     public int getId() {
         return id;
     }
@@ -92,9 +88,19 @@ public class Order {
         this.shippingId = shippingId;
     }
 
+    public int getStatusOrder() {
+        return statusOrder;
+    }
+
+    public void setStatusOrder(int statusOrder) {
+        this.statusOrder = statusOrder;
+    }
+
     @Override
     public String toString() {
-        return "Order{" + "id=" + id + ", accountId=" + accountId + ", totalPrice=" + totalPrice + ", note=" + note + ", createdate=" + createdate + ", shippingId=" + shippingId + '}';
+        return "Order{" + "id=" + id + ", accountId=" + accountId + ", totalPrice=" + totalPrice + ", note=" + note + ", createdate=" + createdate + ", shippingId=" + shippingId + ", statusOrder=" + statusOrder + '}';
     }
+    
+    
     
 }
